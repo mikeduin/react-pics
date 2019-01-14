@@ -1,15 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-  onInputChange(event) {
-    console.log(event.target.value);
-  }
-
-  onInputClick(event) {
-    console.log('input was clicked')
-  }
-
-  // The 'event' object is a normal JS object that contains a bunch of info about the event that just occurred
+  state = { term: ''};
 
   render () {
     return (
@@ -17,7 +9,11 @@ class SearchBar extends React.Component {
         <form className="ui form">
           <div className="field">
           <label>Image Search</label>
-          <input type="text" onChange={this.onInputChange} onClick={this.onInputClick}/>
+          <input
+            type="text"
+            value={this.state.term}
+            onChange={ e => this.setState({ term: e.target.value.toUpperCase() }) }
+          />
           </div>
         </form>
       </div>
